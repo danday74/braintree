@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core'
+import { AfterViewInit, Component, OnInit, signal } from '@angular/core'
 import braintree from 'braintree-web'
 import braintreeWebDropin from 'braintree-web-drop-in'
 import { noop } from 'lodash-es'
@@ -10,7 +10,13 @@ import { noop } from 'lodash-es'
   templateUrl: './route1.component.html',
   styleUrl: './route1.component.scss',
 })
-export class Route1Component implements AfterViewInit {
+export class Route1Component implements OnInit, AfterViewInit {
+  private clientToken = signal<string>('')
+
+  ngOnInit() {
+    this.clientToken.set(localStorage.getItem('clientToken') ?? '')
+  }
+
   ngAfterViewInit() {
     console.log('braintree', braintree)
     console.log('braintreeWebDropin', braintreeWebDropin)
@@ -19,7 +25,7 @@ export class Route1Component implements AfterViewInit {
 
     braintreeWebDropin.create({
       container: container!,
-      authorization: 'CLIENT_AUTHORIZATION',
+      authorization: this.clientToken(),
       // ...plus remaining configuration
     }).then((/* dropinInstance */) => {
       // Use 'dropinInstance' here
