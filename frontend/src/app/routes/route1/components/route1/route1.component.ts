@@ -11,6 +11,8 @@ import { noop } from 'lodash-es'
   styleUrl: './route1.component.scss',
 })
 export class Route1Component implements OnInit, AfterViewInit {
+  private dropin = viewChild<ElementRef<HTMLDivElement>>('dropin')
+
   private clientToken = signal<string>('')
 
   ngOnInit() {
