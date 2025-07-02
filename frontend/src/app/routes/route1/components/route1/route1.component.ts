@@ -23,7 +23,7 @@ export class Route1Component implements OnInit, AfterViewInit {
     console.log('braintree', braintree)
     console.log('braintreeWebDropin', braintreeWebDropin)
 
-    const container: HTMLElement | null = document.getElementById('dropin-container')
+    const container: HTMLDivElement = this.dropin()!.nativeElement
 
     braintreeWebDropin.create({
       container: container!,
