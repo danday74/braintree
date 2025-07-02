@@ -1,0 +1,23 @@
+.header {
+  padding: 15px 20px;
+  background-color: #ddd;
+
+  a {
+    display: inline-block;
+    padding: 5px 12px;
+    background-color: teal;
+    color: #fff;
+
+    &:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+
+    &:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+
+    &.active {
+      background-color: cadetblue;
+    }
+  }
+}
