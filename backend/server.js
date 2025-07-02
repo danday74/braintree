@@ -4,8 +4,8 @@ const port = 3000
 
 const gateway = require('./js/gateway')
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.get('/ping', (req, res) => {
+  res.json({ ping: 'pong' })
 })
 
 app.get('/client-token', (req, res) => {
