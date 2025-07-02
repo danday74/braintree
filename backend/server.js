@@ -8,9 +8,9 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.get('/client_token', (req, res) => {
+app.get('/client-token', (req, res) => {
   gateway.clientToken.generate({}).then(response => {
-    res.send(response.clientToken)
+    res.json({ clientToken: response.clientToken })
   })
 })
 
