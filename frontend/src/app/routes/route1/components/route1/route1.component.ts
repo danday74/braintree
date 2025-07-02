@@ -26,7 +26,7 @@ export class Route1Component implements OnInit, AfterViewInit {
     const container: HTMLDivElement = this.dropin()!.nativeElement
 
     braintreeWebDropin.create({
-      container: container!,
+      container: container,
       authorization: this.clientToken(),
       // ...plus remaining configuration
     }).then((/* dropinInstance */) => {
