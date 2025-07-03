@@ -34,9 +34,10 @@
 
     .btn-amount {
       min-width: 100px;
+      background-color: cadetblue;
 
       &.active {
-        background-color: green;
+        background-color: teal;
         color: #fff;
       }
 
@@ -54,6 +55,8 @@
     .btn-pay {
       min-width: 200px;
       border-radius: 5px;
+      background-color: green;
+      color: #fff;
     }
   }
 }
