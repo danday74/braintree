@@ -53,6 +53,21 @@ export class Route1Component implements OnInit, AfterViewInit {
     this.time.set(time)
   }
 
+  async pay() {
+    const payload: PaymentMethodPayload | null = await this.getPayloadFromDropin()
+    if (payload) {
+      this.braintreeService.transactionSale(payload, this.amount()).subscribe({
+        next: (response: IBraintreeTransactionSaleResponse) => {
+          if (response.success) {
+            this.toastr.success(response.message, 'Payment success')
+          } else {
+            this.toastr.error(response.message, 'Payment failure')
+          }
+        },
+        error: (err: HttpErrorResponse) => this.toastr.error(err.message, 'Unexpected payment error'),
+      })
+    }
+  }
 
   private async getPayloadFromDropin(): Promise<PaymentMethodPayload | null> {
     try {
