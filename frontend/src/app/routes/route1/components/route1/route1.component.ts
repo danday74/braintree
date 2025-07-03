@@ -22,7 +22,12 @@ export class Route1Component implements OnInit, AfterViewInit {
   private clientToken = signal<string>('')
   private dropinInstance = signal<Dropin | null>(null)
 
-  amount = computed<number>(() => this.time() * 2)
+  amount = computed<number>(() => {
+    if (this.time() === 10) return 20
+    if (this.time() === 20) return 38
+    if (this.time() === 30) return 50
+    return 100
+  })
 
   private readonly braintreeService: BraintreeService = inject(BraintreeService)
   private readonly toastr: ToastrService = inject(ToastrService)
