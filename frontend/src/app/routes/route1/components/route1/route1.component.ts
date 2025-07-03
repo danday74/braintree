@@ -1,7 +1,11 @@
-import { AfterViewInit, Component, ElementRef, OnInit, signal, viewChild } from '@angular/core'
+import { AfterViewInit, Component, computed, ElementRef, inject, OnInit, signal, viewChild } from '@angular/core'
 import braintree from 'braintree-web'
-import braintreeWebDropin from 'braintree-web-drop-in'
-import { noop } from 'lodash-es'
+import braintreeWebDropin, { Dropin, PaymentMethodPayload } from 'braintree-web-drop-in'
+import { BraintreeService } from '../../../../services/braintree.service'
+import { HttpErrorResponse } from '@angular/common/http'
+import { ToastrService } from 'ngx-toastr'
+import { IError } from '../../../../interfaces/i-error'
+import { IBraintreeTransactionSaleResponse } from '../../../../interfaces/i-braintree-transaction-sale-response'
 
 @Component({
   selector: 'app-route1',
