@@ -1,3 +1,19 @@
 <div class="route1">
   <div #dropin></div>
+  <div class="grid">
+    <div class="area1">
+      <span class="charging-time">charging time</span>
+    </div>
+    <div class="area2">
+      @for (t of [10, 20, 30]; track t) {
+        <button class="btn-amount" [class.active]="time() === t" [class.first]="$first" [class.last]="$last"
+                (click)="updateTime(t)">
+          <span>{{ t }} mins</span>
+        </button>
+      }
+    </div>
+    <div class="area3">
+      <button class="btn-pay" (click)="pay()">pay &pound;{{ amount() }}</button>
+    </div>
+  </div>
 </div>
