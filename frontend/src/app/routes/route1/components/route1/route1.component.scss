@@ -3,12 +3,21 @@
     margin-bottom: 20px;
   }
 
+  .braintree-dropin-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
   .grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas: 'area1 area3' 'area2 area3';
     text-align: center;
     align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #eee;
+    padding: 20px;
 
     .area1 {
       grid-area: area1;
