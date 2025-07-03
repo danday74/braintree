@@ -41,6 +41,16 @@ export class Route1Component implements OnInit, AfterViewInit {
       container,
       authorization: this.clientToken(),
       dataCollector: true,
+      // very few styling options for dropin
+      card: {
+        overrides: {
+          styles: {
+            input: {
+              color: 'teal',
+            },
+          },
+        },
+      },
     }).then((dropinInstance: Dropin) => {
       this.dropinInstance.set(dropinInstance)
       // Methods documented at https://braintree.github.io/braintree-web-drop-in/docs/current/Dropin.html
