@@ -20,6 +20,12 @@ export class Route1Component implements OnInit, AfterViewInit {
   private dropin = viewChild<ElementRef<HTMLDivElement>>('dropin')
 
   private clientToken = signal<string>('')
+  private dropinInstance = signal<Dropin | null>(null)
+
+  amount = computed<number>(() => this.time() * 2)
+
+  private readonly braintreeService: BraintreeService = inject(BraintreeService)
+  private readonly toastr: ToastrService = inject(ToastrService)
 
   ngOnInit() {
     this.clientToken.set(localStorage.getItem('clientToken') ?? '')
