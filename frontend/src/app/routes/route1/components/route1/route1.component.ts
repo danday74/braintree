@@ -53,4 +53,13 @@ export class Route1Component implements OnInit, AfterViewInit {
     this.time.set(time)
   }
 
+
+  private async getPayloadFromDropin(): Promise<PaymentMethodPayload | null> {
+    try {
+      return await this.dropinInstance()?.requestPaymentMethod() ?? null
+    } catch (err: unknown) {
+      this.toastr.error((err as IError).message, 'Payment error')
+      return null
+    }
+  }
 }
