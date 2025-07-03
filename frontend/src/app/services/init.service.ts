@@ -3,10 +3,12 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { IPingPong } from '../interfaces/i-ping-pong'
 import { Observable } from 'rxjs'
 import { IClientToken } from '../interfaces/i-client-token'
+import { BraintreeService } from './braintree.service'
 
 @Injectable({ providedIn: 'root' })
 export class InitService {
   private readonly http: HttpClient = inject(HttpClient)
+  private readonly braintreeService: BraintreeService = inject(BraintreeService)
 
   async init(): Promise<boolean> {
     const promises: Promise<boolean>[] = [this.pingPong(), this.clientToken()]
@@ -25,7 +27,7 @@ export class InitService {
 
   private async clientToken(): Promise<boolean> {
     return await new Promise((resolve, reject) => {
-      return this.getClientToken().subscribe({
+      return this.braintreeService.getClientToken().subscribe({
         next: (response: IClientToken) => {
           if (response.clientToken) {
             const prevClientToken: string = localStorage.getItem('clientToken') ?? ''
@@ -51,9 +53,5 @@ export class InitService {
 
   private getPingPong(): Observable<IPingPong> {
     return this.http.get<IPingPong>('/api/ping')
-  }
-
-  private getClientToken(): Observable<IClientToken> {
-    return this.http.get<IClientToken>('/api/client-token')
   }
 }
