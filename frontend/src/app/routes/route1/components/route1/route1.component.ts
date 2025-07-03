@@ -48,4 +48,9 @@ export class Route1Component implements OnInit, AfterViewInit {
       console.error('Route1Component - braintreeWebDropin.create error', err)
     })
   }
+
+  updateTime(time: number) {
+    this.time.set(time)
+  }
+
 }
