@@ -44,8 +44,8 @@ export class Route1Component implements OnInit, AfterViewInit {
     }).then((dropinInstance: Dropin) => {
       this.dropinInstance.set(dropinInstance)
       // Methods documented at https://braintree.github.io/braintree-web-drop-in/docs/current/Dropin.html
-    }).catch((/* err */) => {
-      noop()
+    }).catch((err: unknown) => {
+      console.error('Route1Component - braintreeWebDropin.create error', err)
     })
   }
 }
