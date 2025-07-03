@@ -40,9 +40,9 @@ export class Route1Component implements OnInit, AfterViewInit {
     braintreeWebDropin.create({
       container,
       authorization: this.clientToken(),
-      // ...plus remaining configuration
-    }).then((/* dropinInstance */) => {
-      // Use 'dropinInstance' here
+      dataCollector: true,
+    }).then((dropinInstance: Dropin) => {
+      this.dropinInstance.set(dropinInstance)
       // Methods documented at https://braintree.github.io/braintree-web-drop-in/docs/current/Dropin.html
     }).catch((/* err */) => {
       noop()
