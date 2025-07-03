@@ -1,0 +1,59 @@
+.route1 {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas: 'area1 area3' 'area2 area3';
+    text-align: center;
+    align-items: center;
+
+    .area1 {
+      grid-area: area1;
+    }
+
+    .area2 {
+      grid-area: area2;
+    }
+
+    .area3 {
+      grid-area: area3;
+    }
+
+    .charging-time {
+      font-size: 20px;
+    }
+
+    .btn-amount, .btn-pay {
+      padding: 10px 20px;
+      border: none;
+      outline: none;
+      font-size: 20px;
+      cursor: pointer;
+      background-color: #ddd;
+      margin-top: 10px;
+    }
+
+    .btn-amount {
+      min-width: 100px;
+
+      &.active {
+        background-color: green;
+        color: #fff;
+      }
+
+      &.first {
+        border-radius: 5px 0 0 5px;
+        margin-right: 1px;
+      }
+
+      &.last {
+        border-radius: 0 5px 5px 0;
+        margin-left: 1px;
+      }
+    }
+
+    .btn-pay {
+      min-width: 200px;
+      border-radius: 5px;
+    }
+  }
+}
