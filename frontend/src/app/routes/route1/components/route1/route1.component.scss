@@ -69,3 +69,12 @@
     margin-top: 30px;
   }
 }
+
+// choose another way to pay
+::ng-deep .braintree-dropin .braintree-toggle {
+  background-color: green;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
