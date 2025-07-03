@@ -15,6 +15,8 @@ import { IBraintreeTransactionSaleResponse } from '../../../../interfaces/i-brai
   styleUrl: './route1.component.scss',
 })
 export class Route1Component implements OnInit, AfterViewInit {
+  time = signal<number>(10)
+
   private dropin = viewChild<ElementRef<HTMLDivElement>>('dropin')
 
   private clientToken = signal<string>('')
