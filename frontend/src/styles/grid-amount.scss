@@ -1,0 +1,64 @@
+.grid-amount {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  text-align: center;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #eee;
+  padding: 20px;
+
+  .charging-time {
+    font-size: 20px;
+  }
+
+  .customer {
+    font-size: 20px;
+  }
+
+  .btn-amount, .btn-pay {
+    margin-top: 8px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #ddd;
+  }
+
+  .btn-amount {
+    min-width: 100px;
+    background-color: cadetblue;
+
+    &.active {
+      background-color: teal;
+      color: #fff;
+    }
+
+    &.first {
+      border-radius: 5px 0 0 5px;
+      margin-right: 1px;
+    }
+
+    &.last {
+      border-radius: 0 5px 5px 0;
+      margin-left: 1px;
+    }
+  }
+
+  .btn-pay {
+    min-width: 330px;
+    border-radius: 5px;
+    background-color: green;
+    color: #fff;
+  }
+}
+
+.transactions {
+  text-align: center;
+  margin-top: 30px;
+
+  a {
+    display: block;
+  }
+}
