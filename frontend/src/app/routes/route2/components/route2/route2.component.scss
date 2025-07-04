@@ -1,0 +1,27 @@
+.route2 {
+  .heading {
+    margin-bottom: 20px;
+  }
+
+  .grid-hosted-fields {
+    display: grid;
+    grid-template-columns: 110px auto;
+    align-items: center;
+    max-width: 1000px;
+    row-gap: 12px;
+    margin: 0 auto 20px;
+
+    .required {
+      color: #999;
+    }
+
+    .hosted-field {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+      height: 30px;
+      padding: 0 8px;
+      background-color: #e6f9ff;
+    }
+  }
+}
