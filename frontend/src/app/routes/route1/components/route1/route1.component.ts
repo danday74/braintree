@@ -118,6 +118,7 @@ export class Route1Component implements OnInit {
     }).catch((err: unknown) => {
       console.error('Route1Component - braintreeWebDropin.create error', err)
     })
+    this.dropinInstance.set(dropinInstance)
   }
 
   private async getPayloadFromDropin(): Promise<PaymentMethodPayload | null> {
