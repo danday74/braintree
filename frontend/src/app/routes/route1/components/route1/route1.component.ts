@@ -95,6 +95,31 @@ export class Route1Component implements OnInit {
     }
   }
 
+  private createDropin(clientToken: string) {
+    const container: HTMLDivElement = this.dropin()!.nativeElement
+
+    braintreeWebDropin.create({
+      container,
+      authorization: clientToken,
+      dataCollector: true,
+      // very few styling options for dropin
+      card: {
+        overrides: {
+          styles: {
+            input: {
+              color: 'teal',
+            },
+          },
+        },
+      },
+    }).then((dropinInstance: Dropin) => {
+      // see https://braintree.github.io/braintree-web-drop-in/docs/current/Dropin.html
+      this.dropinInstance.set(dropinInstance)
+    }).catch((err: unknown) => {
+      console.error('Route1Component - braintreeWebDropin.create error', err)
+    })
+  }
+
   private async getPayloadFromDropin(): Promise<PaymentMethodPayload | null> {
     try {
       return await this.dropinInstance()?.requestPaymentMethod() ?? null
