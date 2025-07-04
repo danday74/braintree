@@ -19,6 +19,12 @@ import { IBraintreeTransactionSaleResponse } from '@interfaces/i-braintree-trans
   styleUrl: './route2.component.scss',
 })
 export class Route2Component implements OnInit {
+  time = signal<number>(10)
+
+  private cardNumber = viewChild<ElementRef<HTMLDivElement>>('cardNumber')
+  private cvv = viewChild<ElementRef<HTMLDivElement>>('cvv')
+  private expiryDate = viewChild<ElementRef<HTMLDivElement>>('expiryDate')
+
   readonly email = signal<string>(myAppConfig.email).asReadonly()
 
   private clientToken = signal<string>('')
