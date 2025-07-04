@@ -96,6 +96,7 @@ export class Route2Component implements OnInit {
       client: clientInstance,
       styles: {
         'input': {
+          'color': 'teal',
           'font-size': '16px',
         },
         'input.valid': {
