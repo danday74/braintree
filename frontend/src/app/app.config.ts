@@ -7,12 +7,18 @@ import { provideAnimations } from '@angular/platform-browser/animations'
 import { provideToastr } from 'ngx-toastr'
 
 const initApp = (initService: InitService) => {
-  return () => {
-    initService.init()
-      .then((success: boolean) => {
-        if (!success) console.error('initApp failure', success)
-      })
-      .catch((err: unknown) => console.error('initApp error', err))
+  return (): Promise<boolean> => {
+    return new Promise((resolve, reject) => {
+      initService.init()
+        .then((success: boolean) => {
+          if (!success) console.error('failure initialising app')
+          resolve(success)
+        })
+        .catch((err: unknown) => {
+          console.error('error initialising app, is the backend running?', err)
+          reject(err)
+        })
+    })
   }
 }
 
