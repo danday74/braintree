@@ -1,5 +1,17 @@
 # Braintree
 
+## Usage
+
+`cd backend`
+`npm i`
+`npm start`
+
+`cd frontend`
+`npm i`
+`npm start`
+
+NOTE: If the backend is not running the frontend will not work
+
 ## Docs
 
 docs home https://developer.paypal.com/braintree/docs
