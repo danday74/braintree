@@ -91,8 +91,23 @@ export class Route1Component implements OnInit {
       card: {
         overrides: {
           styles: {
-            input: {
-              color: 'teal',
+            'input': {
+              'color': 'teal',
+              'font-size': '16px',
+            },
+            'input.valid': {
+              'color': 'green',
+            },
+          },
+          fields: {
+            number: {
+              placeholder: '4111 1111 1111 1111',
+            },
+            cvv: {
+              placeholder: '123',
+            },
+            expirationDate: {
+              placeholder: '03/33',
             },
           },
         },
