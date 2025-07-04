@@ -38,7 +38,7 @@ export const appConfig: ApplicationConfig = {
     {
       provide: APP_INITIALIZER,
       useFactory: initApp,
-      deps: [InitService],
+      deps: [InitService, ToastrService],
       multi: true,
     },
   ],
