@@ -54,19 +54,18 @@ app.post('/customer/find-or-create', async (req, res) => {
   }
 })
 
-app.post('/transaction/sale', (req, res) => {
+app.post('/transaction/sale', async (req, res) => {
   const amount = req.body.amount
   const nonce = req.body.nonce
   const deviceData = req.body.deviceData
 
-  gateway.transaction.sale({
+  const result = await gateway.transaction.sale({
     amount,
     paymentMethodNonce: nonce,
     deviceData,
     options: { submitForSettlement: true },
-  }).then(result => {
-    res.json(result)
   })
+  res.json(result)
 })
 
 app.listen(port, () => {
