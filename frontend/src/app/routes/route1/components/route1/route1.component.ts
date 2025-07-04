@@ -58,9 +58,14 @@ export class Route1Component implements OnInit {
   }
 
   async pay() {
-    const payload: PaymentMethodPayload | null = await this.getPayloadFromDropin()
-    if (payload) {
-      this.braintreeService.transactionSale(payload, this.amount()).subscribe({
+    const pmp: PaymentMethodPayload | null = await this.getPayloadFromDropin()
+    if (pmp) {
+      const payload: IBraintreeTransactionSalePayload = {
+        nonce: pmp.nonce,
+        deviceData: pmp.deviceData,
+        amount: this.amount(),
+      }
+      this.braintreeService.transactionSale(payload).subscribe({
         next: (response: IBraintreeTransactionSaleResponse) => {
           if (response.success) {
             this.toastr.success(response.message, 'Payment success')
