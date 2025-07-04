@@ -5,19 +5,14 @@ import { IClientToken } from '@interfaces/i-client-token'
 import { IBraintreeTransactionSaleResponse } from '@interfaces/i-braintree-transaction-sale-response'
 import { ICustomer } from '@interfaces/i-customer'
 import { ICustomerDetails } from '@interfaces/i-customer-details'
-import { ITransactionSalePayload } from '@interfaces/i-transaction-sale-payload'
+import { IBraintreeTransactionSalePayload } from '@interfaces/i-braintree-transaction-sale-payload'
 
 @Injectable({ providedIn: 'root' })
 export class BraintreeService {
   private readonly http: HttpClient = inject(HttpClient)
 
-  transactionSale(paymentMethodPayload: PaymentMethodPayload, amount: number): Observable<IBraintreeTransactionSaleResponse> {
+  transactionSale(payload: IBraintreeTransactionSalePayload): Observable<IBraintreeTransactionSaleResponse> {
     const url = '/api/transaction/sale'
-    const payload = {
-      nonce: paymentMethodPayload.nonce,
-      deviceData: paymentMethodPayload.deviceData,
-      amount,
-    }
     return this.http.post<IBraintreeTransactionSaleResponse>(url, payload)
   }
 
