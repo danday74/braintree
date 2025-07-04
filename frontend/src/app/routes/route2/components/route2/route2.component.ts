@@ -58,4 +58,76 @@ export class Route2Component implements OnInit {
 
     console.log('braintree', braintree)
   }
+
+  updateTime(time: number) {
+    this.time.set(time)
+  }
+
+  private async createClient(clientToken: string) {
+    const clientInstance: Client = await braintree.client.create({
+      authorization: clientToken,
+    })
+
+    const dataCollectorInstance: DataCollector = await braintree.dataCollector.create({
+      client: clientInstance,
+    })
+    this.dataCollectorInstance.set(dataCollectorInstance)
+
+    const hostedFieldsInstance: HostedFields = await braintree.hostedFields.create({
+      client: clientInstance,
+      styles: {
+        'input': {
+          'font-size': '16px',
+        },
+        'input.valid': {
+          'color': 'green',
+        },
+      },
+      fields: {
+        number: {
+          container: this.cardNumber()!.nativeElement,
+          placeholder: '4111 1111 1111 1111',
+        },
+        cvv: {
+          container: this.cvv()!.nativeElement,
+          placeholder: '123',
+        },
+        expirationDate: {
+          container: this.expiryDate()!.nativeElement,
+          placeholder: '03/33',
+        },
+      },
+    })
+    this.hostedFieldsInstance.set(hostedFieldsInstance)
+  }
+
+  async pay() {
+    const hftp: HostedFieldsTokenizePayload | null = await this.getPayloadFromClient()
+    if (hftp) {
+      const payload: IBraintreeTransactionSalePayload = {
+        nonce: hftp.nonce,
+        deviceData: this.dataCollectorInstance()?.deviceData,
+        amount: this.amount(),
+      }
+      this.braintreeService.transactionSale(payload).subscribe({
+        next: (response: IBraintreeTransactionSaleResponse) => {
+          if (response.success) {
+            this.toastr.success(response.message, 'Payment success')
+          } else {
+            this.toastr.error(response.message, 'Payment failure')
+          }
+        },
+        error: (err: HttpErrorResponse) => this.toastr.error(err.message, 'Unexpected payment error'),
+      })
+    }
+  }
+
+  private async getPayloadFromClient(): Promise<HostedFieldsTokenizePayload | null> {
+    try {
+      return await this.hostedFieldsInstance()?.tokenize() ?? null
+    } catch (err: unknown) {
+      this.toastr.error((err as IError).message, 'Payment error')
+      return null
+    }
+  }
 }
