@@ -61,6 +61,7 @@ app.post('/customer/find-or-create', async (req, res) => {
   }
 })
 
+// take payment - deviceData is optional but helps to prevent fraud
 app.post('/transaction/sale', async (req, res) => {
   const amount = req.body.amount
   const nonce = req.body.nonce
@@ -76,6 +77,8 @@ app.post('/transaction/sale', async (req, res) => {
   })
   res.json(result)
 })
+
+// END: Braintree APIs
 
 app.listen(port, () => {
   console.log(`braintree-be listening on port ${port}`)
