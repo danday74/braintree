@@ -37,9 +37,9 @@ export class Route1Component implements OnInit {
   private readonly toastr: ToastrService = inject(ToastrService)
 
   constructor() {
-    effect(() => {
+    effect(async () => {
       const clientToken: string = this.clientToken()
-      if (clientToken) this.createDropin(clientToken)
+      if (clientToken) await this.createDropin(clientToken)
     }, { allowSignalWrites: true })
   }
 
