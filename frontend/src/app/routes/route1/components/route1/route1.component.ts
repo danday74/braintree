@@ -47,34 +47,6 @@ export class Route1Component implements OnInit {
     this.clientToken.set(localStorage.getItem('clientToken') ?? '')
   }
 
-  ngAfterViewInit() {
-    console.log('braintree', braintree)
-    console.log('braintreeWebDropin', braintreeWebDropin)
-
-    const container: HTMLDivElement = this.dropin()!.nativeElement
-
-    braintreeWebDropin.create({
-      container,
-      authorization: this.clientToken(),
-      dataCollector: true,
-      // very few styling options for dropin
-      card: {
-        overrides: {
-          styles: {
-            input: {
-              color: 'teal',
-            },
-          },
-        },
-      },
-    }).then((dropinInstance: Dropin) => {
-      this.dropinInstance.set(dropinInstance)
-      // Methods documented at https://braintree.github.io/braintree-web-drop-in/docs/current/Dropin.html
-    }).catch((err: unknown) => {
-      console.error('Route1Component - braintreeWebDropin.create error', err)
-    })
-  }
-
   updateTime(time: number) {
     this.time.set(time)
   }
