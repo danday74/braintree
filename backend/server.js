@@ -4,8 +4,6 @@ const port = 3000
 
 app.use(express.json())
 
-const gateway = require('./js/gateway')
-
 app.get('/ping', (req, res) => {
   res.json({ ping: 'pong' })
 })
