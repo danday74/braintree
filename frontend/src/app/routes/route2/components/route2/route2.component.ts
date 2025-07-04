@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, inject, OnInit, signal } from '@angular/core'
 import braintree from 'braintree-web'
+import { switchMap } from 'rxjs'
+import { ICustomer } from '@interfaces/i-customer'
+import { IClientToken } from '@interfaces/i-client-token'
+import { HttpErrorResponse } from '@angular/common/http'
+import { BraintreeService } from '@services/braintree.service'
+import { myAppConfig } from '../../../../my-app.config'
 
 @Component({
   selector: 'app-route2',
