@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, computed, ElementRef, inject, OnInit, signal, viewChild } from '@angular/core'
+import { Component, computed, effect, ElementRef, inject, OnInit, signal, viewChild } from '@angular/core'
 import braintree from 'braintree-web'
 import braintreeWebDropin, { Dropin, PaymentMethodPayload } from 'braintree-web-drop-in'
 import { BraintreeService } from '../../../../services/braintree.service'
@@ -6,6 +6,9 @@ import { HttpErrorResponse } from '@angular/common/http'
 import { ToastrService } from 'ngx-toastr'
 import { IError } from '../../../../interfaces/i-error'
 import { IBraintreeTransactionSaleResponse } from '../../../../interfaces/i-braintree-transaction-sale-response'
+import { ICustomer } from '../../../../interfaces/i-customer'
+import { switchMap } from 'rxjs'
+import { IClientToken } from '../../../../interfaces/i-client-token'
 
 @Component({
   selector: 'app-route1',
@@ -14,7 +17,7 @@ import { IBraintreeTransactionSaleResponse } from '../../../../interfaces/i-brai
   templateUrl: './route1.component.html',
   styleUrl: './route1.component.scss',
 })
-export class Route1Component implements OnInit, AfterViewInit {
+export class Route1Component implements OnInit {
   time = signal<number>(10)
 
   private dropin = viewChild<ElementRef<HTMLDivElement>>('dropin')
