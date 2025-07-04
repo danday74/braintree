@@ -36,6 +36,13 @@ export class Route1Component implements OnInit {
   private readonly braintreeService: BraintreeService = inject(BraintreeService)
   private readonly toastr: ToastrService = inject(ToastrService)
 
+  constructor() {
+    effect(() => {
+      const clientToken: string = this.clientToken()
+      if (clientToken) this.createDropin(clientToken)
+    }, { allowSignalWrites: true })
+  }
+
   ngOnInit() {
     this.clientToken.set(localStorage.getItem('clientToken') ?? '')
   }
