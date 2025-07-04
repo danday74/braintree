@@ -2,10 +2,10 @@ import { inject, Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { IClientToken } from '@interfaces/i-client-token'
-import { PaymentMethodPayload } from 'braintree-web-drop-in'
 import { IBraintreeTransactionSaleResponse } from '@interfaces/i-braintree-transaction-sale-response'
 import { ICustomer } from '@interfaces/i-customer'
 import { ICustomerDetails } from '@interfaces/i-customer-details'
+import { ITransactionSalePayload } from '@interfaces/i-transaction-sale-payload'
 
 @Injectable({ providedIn: 'root' })
 export class BraintreeService {
