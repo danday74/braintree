@@ -24,4 +24,8 @@ With a sandbox account, you can view transactions by signing in to the `sandbox 
 
 You can configure sandbox settings to set currency, enforce CVV, etc.
 
+## Backend
+
+Minimal Braintree APIs needed for integration are found in [server.js](backend/server.js)
+
 
