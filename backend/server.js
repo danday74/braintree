@@ -34,6 +34,7 @@ app.get('/client-token', async (req, res) => {
   res.json({ clientToken })
 })
 
+// find or create a customer from an email address (or other unique customer data) - needed to remember previous cards
 app.post('/customer/find-or-create', async (req, res) => {
   const email = req.body.email
 
