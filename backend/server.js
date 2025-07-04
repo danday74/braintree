@@ -19,6 +19,7 @@ const getClientToken = async customerId => {
   return response.clientToken
 }
 
+// GET a client token (needed for Braintree integration) - providing a customer ID allows previous cards to be remembered
 app.get('/client-token/:customerId', async (req, res) => {
   const customerId = req.params.customerId
   if (!customerId) console.warn('no customerId provided when generating client token')
@@ -26,6 +27,7 @@ app.get('/client-token/:customerId', async (req, res) => {
   res.json({ clientToken })
 })
 
+// GET a client token (needed for Braintree integration) - previous cards will not be remembered
 app.get('/client-token', async (req, res) => {
   console.warn('no customerId provided when generating client token')
   const clientToken = await getClientToken()
