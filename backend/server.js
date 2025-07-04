@@ -59,6 +59,8 @@ app.post('/transaction/sale', async (req, res) => {
   const nonce = req.body.nonce
   const deviceData = req.body.deviceData
 
+  if (!deviceData) console.warn('no deviceData provided')
+
   const result = await gateway.transaction.sale({
     amount,
     paymentMethodNonce: nonce,
