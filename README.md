@@ -10,7 +10,7 @@
 `npm i`
 `npm start`
 
-NOTE: If the backend is not running the frontend will not work
+NOTE: If the backend is not running, the frontend will not work
 
 ## Docs
 
@@ -50,4 +50,4 @@ Further APIs may be required ... for example, to remove a card that has previous
 
 The former is easier to integrate, the latter is more flexible and allows custom styling
 
-Both use the same BE APIs
+Both use the same backend APIs
