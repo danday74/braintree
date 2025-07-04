@@ -23,7 +23,7 @@ export class Route2Component implements OnInit {
 
   private cardNumber = viewChild<ElementRef<HTMLDivElement>>('cardNumber')
   private cvv = viewChild<ElementRef<HTMLDivElement>>('cvv')
-  private expiryDate = viewChild<ElementRef<HTMLDivElement>>('expiryDate')
+  private expirationDate = viewChild<ElementRef<HTMLDivElement>>('expirationDate')
 
   readonly email = signal<string>(myAppConfig.email).asReadonly()
 
@@ -113,7 +113,7 @@ export class Route2Component implements OnInit {
           placeholder: '123',
         },
         expirationDate: {
-          container: this.expiryDate()!.nativeElement,
+          container: this.expirationDate()!.nativeElement,
           placeholder: '03/33',
         },
       },
