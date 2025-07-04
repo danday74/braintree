@@ -26,6 +26,7 @@ export class Route2Component implements OnInit {
   private expirationDate = viewChild<ElementRef<HTMLDivElement>>('expirationDate')
 
   readonly email = signal<string>(myAppConfig.email).asReadonly()
+  readonly transactionsUrl = signal<string>(myAppConfig.transactionsUrl).asReadonly()
 
   private clientToken = signal<string>('')
   private dataCollectorInstance = signal<DataCollector | null>(null)

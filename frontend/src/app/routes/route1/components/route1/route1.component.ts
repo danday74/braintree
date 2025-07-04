@@ -24,6 +24,7 @@ export class Route1Component implements OnInit {
   private dropin = viewChild<ElementRef<HTMLDivElement>>('dropin')
 
   readonly email = signal<string>(myAppConfig.email).asReadonly()
+  readonly transactionsUrl = signal<string>(myAppConfig.transactionsUrl).asReadonly()
 
   private clientToken = signal<string>('')
   private dropinInstance = signal<Dropin | null>(null)
