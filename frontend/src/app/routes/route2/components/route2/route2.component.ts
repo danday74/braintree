@@ -39,6 +39,14 @@ export class Route2Component implements OnInit {
   })
 
   private readonly braintreeService: BraintreeService = inject(BraintreeService)
+  private readonly toastr: ToastrService = inject(ToastrService)
+
+  constructor() {
+    effect(async () => {
+      const clientToken: string = this.clientToken()
+      if (clientToken) await this.createClient(clientToken)
+    }, { allowSignalWrites: true })
+  }
 
   ngOnInit() {
     this.braintreeService.findOrCreateCustomer({ email: this.email() }).pipe(
