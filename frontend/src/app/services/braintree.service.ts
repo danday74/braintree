@@ -4,6 +4,8 @@ import { Observable } from 'rxjs'
 import { IClientToken } from '../interfaces/i-client-token'
 import { PaymentMethodPayload } from 'braintree-web-drop-in'
 import { IBraintreeTransactionSaleResponse } from '../interfaces/i-braintree-transaction-sale-response'
+import { ICustomer } from '../interfaces/i-customer'
+import { ICustomerDetails } from '../interfaces/i-customer-details'
 
 @Injectable({ providedIn: 'root' })
 export class BraintreeService {
@@ -19,8 +21,14 @@ export class BraintreeService {
     return this.http.post<IBraintreeTransactionSaleResponse>(url, payload)
   }
 
-  getClientToken(): Observable<IClientToken> {
-    const url = '/api/client-token'
+  findOrCreateCustomer(customerDetails: ICustomerDetails): Observable<ICustomer> {
+    const url = '/api/customer/find-or-create'
+    return this.http.post<ICustomer>(url, customerDetails)
+  }
+
+  getClientToken(customerId: string | null = null): Observable<IClientToken> {
+    const baseUrl = '/api/client-token'
+    const url = customerId ? `${baseUrl}/${customerId}` : baseUrl
     return this.http.get<IClientToken>(url)
   }
 }
