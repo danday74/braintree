@@ -28,6 +28,15 @@ export class Route2Component implements OnInit {
   readonly email = signal<string>(myAppConfig.email).asReadonly()
 
   private clientToken = signal<string>('')
+  private dataCollectorInstance = signal<DataCollector | null>(null)
+  private hostedFieldsInstance = signal<HostedFields | null>(null)
+
+  amount = computed<number>(() => {
+    if (this.time() === 10) return 20
+    if (this.time() === 20) return 38
+    if (this.time() === 30) return 50
+    return 0
+  })
 
   private readonly braintreeService: BraintreeService = inject(BraintreeService)
 
