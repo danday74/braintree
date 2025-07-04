@@ -1,3 +1,36 @@
 <div class="route2">
 
+  <div class="grid-amount">
+    <div>
+      <span class="charging-time">charging time</span>
+    </div>
+
+    <div>
+      <div class="customer">
+        <span>customer: {{ email() }}</span>
+      </div>
+    </div>
+
+    <div>
+      @for (t of [10, 20, 30]; track t) {
+        <button class="btn-amount" [class.active]="time() === t" [class.first]="$first" [class.last]="$last"
+                (click)="updateTime(t)">
+          <span>{{ t }} mins</span>
+        </button>
+      }
+    </div>
+
+    <div>
+      <button class="btn-pay" (click)="pay()">pay &pound;{{ amount() }}</button>
+    </div>
+  </div>
+
+  <div class="transactions">
+    <a href="https://sandbox.braintreegateway.com/merchants/8zvm8zw5yy54jsqv/transactions/advanced_search" target="braintree">
+      <span>Braintree dashboard transactions</span>
+    </a>
+    <a href="https://developer.paypal.com/braintree/docs/reference/general/testing/node/#valid-card-numbers" target="braintree">
+      <span>Test card numbers</span>
+    </a>
+  </div>
 </div>
