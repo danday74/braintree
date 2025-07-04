@@ -44,7 +44,17 @@ export class Route1Component implements OnInit {
   }
 
   ngOnInit() {
-    this.clientToken.set(localStorage.getItem('clientToken') ?? '')
+    this.braintreeService.findOrCreateCustomer({ email: this.email() }).pipe(
+      switchMap((customer: ICustomer) => {
+        return this.braintreeService.getClientToken(customer.id)
+      }),
+    ).subscribe({
+      next: (response: IClientToken) => this.clientToken.set(response.clientToken),
+      error: (err: HttpErrorResponse) => console.error('Route1Component - fatal error getting client token', err),
+    })
+
+    console.log('braintree', braintree)
+    console.log('braintreeWebDropin', braintreeWebDropin)
   }
 
   updateTime(time: number) {
