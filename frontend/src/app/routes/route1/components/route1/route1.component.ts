@@ -9,6 +9,7 @@ import { ICustomer } from '@interfaces/i-customer'
 import { switchMap } from 'rxjs'
 import { IClientToken } from '@interfaces/i-client-token'
 import { myAppConfig } from '../../../../my-app.config'
+import { IBraintreeTransactionSalePayload } from '@interfaces/i-braintree-transaction-sale-payload'
 
 @Component({
   selector: 'app-route1',
