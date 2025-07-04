@@ -15,7 +15,20 @@ import { myAppConfig } from '../../../../my-app.config'
   styleUrl: './route2.component.scss',
 })
 export class Route2Component implements OnInit {
+  readonly email = signal<string>(myAppConfig.email).asReadonly()
+
+  private clientToken = signal<string>('')
+
+  private readonly braintreeService: BraintreeService = inject(BraintreeService)
+
   ngOnInit() {
+    this.braintreeService.findOrCreateCustomer({ email: this.email() }).pipe(
+      switchMap((customer: ICustomer) => this.braintreeService.getClientToken(customer.id)),
+    ).subscribe({
+      next: (response: IClientToken) => this.clientToken.set(response.clientToken),
+      error: (err: HttpErrorResponse) => console.error('Route1Component - fatal error getting client token', err),
+    })
+
     console.log('braintree', braintree)
   }
 }
