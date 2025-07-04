@@ -40,4 +40,14 @@ You can configure sandbox settings to set currency, enforce CVV, etc.
 
 Minimal Braintree APIs needed for integration are found in [server.js](backend/server.js)
 
+## Useful info
 
+* This app affords a minimal Braintree integration
+
+Further APIs may be required ... for example, to remove a card that has previously been remembered
+
+* Braintree offers dropin and hosted fields
+
+The former is easier to integrate, the latter is more flexible and allows custom styling
+
+Both use the same BE APIs
