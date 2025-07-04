@@ -8,6 +8,10 @@ app.get('/ping', (req, res) => {
   res.json({ ping: 'pong' })
 })
 
+// START: Braintree APIs
+
+const gateway = require('./js/gateway')
+
 const getClientToken = async customerId => {
   const response = await gateway.clientToken.generate({
     customerId, // if provided remembers card details
