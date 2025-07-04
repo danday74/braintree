@@ -95,7 +95,7 @@ export class Route1Component implements OnInit {
     }
   }
 
-  private createDropin(clientToken: string) {
+  private async createDropin(clientToken: string) {
     const container: HTMLDivElement = this.dropin()!.nativeElement
 
     const dropinInstance: Dropin = await braintreeWebDropin.create({
