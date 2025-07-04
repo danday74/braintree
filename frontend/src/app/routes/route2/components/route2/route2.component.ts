@@ -62,10 +62,10 @@ export class Route2Component implements OnInit {
   }
 
   async pay() {
-    const hftp: HostedFieldsTokenizePayload | null = await this.getPayloadFromClient()
-    if (hftp) {
+    const pl: HostedFieldsTokenizePayload | null = await this.getPayloadFromClient()
+    if (pl) {
       const payload: IBraintreeTransactionSalePayload = {
-        nonce: hftp.nonce,
+        nonce: pl.nonce,
         deviceData: this.dataCollectorInstance()?.deviceData,
         amount: this.amount(),
       }

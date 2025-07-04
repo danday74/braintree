@@ -59,11 +59,11 @@ export class Route1Component implements OnInit {
   }
 
   async pay() {
-    const pmp: PaymentMethodPayload | null = await this.getPayloadFromDropin()
-    if (pmp) {
+    const pl: PaymentMethodPayload | null = await this.getPayloadFromDropin()
+    if (pl) {
       const payload: IBraintreeTransactionSalePayload = {
-        nonce: pmp.nonce,
-        deviceData: pmp.deviceData,
+        nonce: pl.nonce,
+        deviceData: pl.deviceData,
         amount: this.amount(),
       }
       this.braintreeService.transactionSale(payload).subscribe({
