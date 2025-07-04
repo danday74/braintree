@@ -19,11 +19,13 @@ const getClientToken = async customerId => {
 
 app.get('/client-token/:customerId', async (req, res) => {
   const customerId = req.params.customerId
+  if (!customerId) console.warn('no customerId provided when generating client token')
   const clientToken = await getClientToken(customerId)
   res.json({ clientToken })
 })
 
 app.get('/client-token', async (req, res) => {
+  console.warn('no customerId provided when generating client token')
   const clientToken = await getClientToken()
   res.json({ clientToken })
 })
