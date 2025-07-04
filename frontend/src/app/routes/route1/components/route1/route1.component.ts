@@ -1,13 +1,14 @@
 import { Component, computed, effect, ElementRef, inject, OnInit, signal, viewChild } from '@angular/core'
 import braintreeWebDropin, { Dropin, PaymentMethodPayload } from 'braintree-web-drop-in'
-import { BraintreeService } from '../../../../services/braintree.service'
+import { BraintreeService } from '@services/braintree.service'
 import { HttpErrorResponse } from '@angular/common/http'
 import { ToastrService } from 'ngx-toastr'
-import { IError } from '../../../../interfaces/i-error'
-import { IBraintreeTransactionSaleResponse } from '../../../../interfaces/i-braintree-transaction-sale-response'
-import { ICustomer } from '../../../../interfaces/i-customer'
+import { IError } from '@interfaces/i-error'
+import { IBraintreeTransactionSaleResponse } from '@interfaces/i-braintree-transaction-sale-response'
+import { ICustomer } from '@interfaces/i-customer'
 import { switchMap } from 'rxjs'
-import { IClientToken } from '../../../../interfaces/i-client-token'
+import { IClientToken } from '@interfaces/i-client-token'
+import { myAppConfig } from '../../../../my-app.config'
 
 @Component({
   selector: 'app-route1',
