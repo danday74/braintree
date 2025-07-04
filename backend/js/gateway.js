@@ -2,9 +2,9 @@ const braintree = require('braintree')
 
 const gateway = new braintree.BraintreeGateway({
   environment: braintree.Environment.Sandbox,
-  merchantId: '8zvm8zw5yy54jsqv',
-  publicKey: 'mkgvt4yt3yq4k2tk',
-  privateKey: 'e144a4e77f86c55be65c04dff724ba85',
+  merchantId: 'dvk7crxxggftjq3p',
+  publicKey: 'kvfqh6grqfk5mbby',
+  privateKey: '77cec406f4ec2bfd4b629ced9130462d',
 })
 
 module.exports = gateway
