@@ -10,11 +10,7 @@ const initApp = (initService: InitService) => {
   return () => {
     initService.init()
       .then((success: boolean) => {
-        if (success) {
-          console.log('initApp success', success)
-        } else {
-          console.error('initApp failure', success)
-        }
+        if (!success) console.error('initApp failure', success)
       })
       .catch((err: unknown) => console.error('initApp error', err))
   }
