@@ -98,6 +98,7 @@ export class Route1Component implements OnInit {
   private async createDropin(clientToken: string) {
     const container: HTMLDivElement = this.dropin()!.nativeElement
 
+    // see https://braintree.github.io/braintree-web-drop-in/docs/current/Dropin.html
     const dropinInstance: Dropin = await braintreeWebDropin.create({
       container,
       authorization: clientToken,
@@ -112,11 +113,6 @@ export class Route1Component implements OnInit {
           },
         },
       },
-    }).then((dropinInstance: Dropin) => {
-      // see https://braintree.github.io/braintree-web-drop-in/docs/current/Dropin.html
-      this.dropinInstance.set(dropinInstance)
-    }).catch((err: unknown) => {
-      console.error('Route1Component - braintreeWebDropin.create error', err)
     })
     this.dropinInstance.set(dropinInstance)
   }
