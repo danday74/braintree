@@ -50,7 +50,7 @@ export class Route1Component implements OnInit {
       switchMap((customer: ICustomer) => this.braintreeService.getClientToken(customer.id)),
     ).subscribe({
       next: (response: IClientToken) => this.clientToken.set(response.clientToken),
-      error: (err: HttpErrorResponse) => console.error('Route1Component - fatal error getting client token', err),
+      error: (err: HttpErrorResponse) => console.error('fatal error getting client token', err),
     })
   }
 
