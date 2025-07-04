@@ -61,6 +61,27 @@ export class Route2Component implements OnInit {
     this.time.set(time)
   }
 
+  async pay() {
+    const hftp: HostedFieldsTokenizePayload | null = await this.getPayloadFromClient()
+    if (hftp) {
+      const payload: IBraintreeTransactionSalePayload = {
+        nonce: hftp.nonce,
+        deviceData: this.dataCollectorInstance()?.deviceData,
+        amount: this.amount(),
+      }
+      this.braintreeService.transactionSale(payload).subscribe({
+        next: (response: IBraintreeTransactionSaleResponse) => {
+          if (response.success) {
+            this.toastr.success(response.message, 'Payment success')
+          } else {
+            this.toastr.error(response.message, 'Payment failure')
+          }
+        },
+        error: (err: HttpErrorResponse) => this.toastr.error(err.message, 'Unexpected payment error'),
+      })
+    }
+  }
+
   private async createClient(clientToken: string) {
     const clientInstance: Client = await braintree.client.create({
       authorization: clientToken,
@@ -97,27 +118,6 @@ export class Route2Component implements OnInit {
       },
     })
     this.hostedFieldsInstance.set(hostedFieldsInstance)
-  }
-
-  async pay() {
-    const hftp: HostedFieldsTokenizePayload | null = await this.getPayloadFromClient()
-    if (hftp) {
-      const payload: IBraintreeTransactionSalePayload = {
-        nonce: hftp.nonce,
-        deviceData: this.dataCollectorInstance()?.deviceData,
-        amount: this.amount(),
-      }
-      this.braintreeService.transactionSale(payload).subscribe({
-        next: (response: IBraintreeTransactionSaleResponse) => {
-          if (response.success) {
-            this.toastr.success(response.message, 'Payment success')
-          } else {
-            this.toastr.error(response.message, 'Payment failure')
-          }
-        },
-        error: (err: HttpErrorResponse) => this.toastr.error(err.message, 'Unexpected payment error'),
-      })
-    }
   }
 
   private async getPayloadFromClient(): Promise<HostedFieldsTokenizePayload | null> {
