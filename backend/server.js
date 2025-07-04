@@ -47,11 +47,9 @@ app.post('/customer/find-or-create', async (req, res) => {
   })
 
   if (customers.length) {
-    console.log('existing customer', customers[0])
     res.json(customers[0])
   } else {
     const result = await gateway.customer.create({ email })
-    console.log('new customer', result.customer)
     res.json(result.customer)
   }
 })
