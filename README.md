@@ -38,7 +38,7 @@ You can configure sandbox settings to set currency, enforce CVV, etc.
 
 ## Backend
 
-Minimal Braintree APIs needed for integration are found in [server.js](backend/server.js)
+Minimal backend APIs needed for integration are found in [server.js](backend/server.js)
 
 ## Useful info
 
