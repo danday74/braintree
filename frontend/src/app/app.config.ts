@@ -4,9 +4,9 @@ import { routes } from './app.routes'
 import { InitService } from './services/init.service'
 import { provideHttpClient, withFetch } from '@angular/common/http'
 import { provideAnimations } from '@angular/platform-browser/animations'
-import { provideToastr } from 'ngx-toastr'
+import { provideToastr, ToastrService } from 'ngx-toastr'
 
-const initApp = (initService: InitService) => {
+const initApp = (initService: InitService, toastr: ToastrService) => {
   return (): Promise<boolean> => {
     return new Promise((resolve, reject) => {
       initService.init()
@@ -15,7 +15,9 @@ const initApp = (initService: InitService) => {
           resolve(success)
         })
         .catch((err: unknown) => {
-          console.error('error initialising app, is the backend running?', err)
+          const msg = 'error initialising app, is the backend running?'
+          toastr.error(msg)
+          console.error(msg, err)
           reject(err)
         })
     })
