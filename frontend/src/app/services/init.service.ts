@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core'
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
-import { IPingPong } from '../interfaces/i-ping-pong'
+import { IPingPong } from '@interfaces/i-ping-pong'
 import { Observable } from 'rxjs'
 
 @Injectable({ providedIn: 'root' })
