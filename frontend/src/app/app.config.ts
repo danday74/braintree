@@ -11,7 +11,11 @@ const initApp = (initService: InitService, toastr: ToastrService) => {
     return new Promise((resolve, reject) => {
       initService.init()
         .then((success: boolean) => {
-          if (!success) console.error('failure initialising app')
+          if (!success) {
+            const msg = 'failure initialising app'
+            toastr.error(msg)
+            console.error(msg)
+          }
           resolve(success)
         })
         .catch((err: unknown) => {
