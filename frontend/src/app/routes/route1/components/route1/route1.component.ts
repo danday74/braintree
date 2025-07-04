@@ -1,5 +1,4 @@
 import { Component, computed, effect, ElementRef, inject, OnInit, signal, viewChild } from '@angular/core'
-import braintree from 'braintree-web'
 import braintreeWebDropin, { Dropin, PaymentMethodPayload } from 'braintree-web-drop-in'
 import { BraintreeService } from '../../../../services/braintree.service'
 import { HttpErrorResponse } from '@angular/common/http'
@@ -21,8 +20,8 @@ export class Route1Component implements OnInit {
   time = signal<number>(10)
 
   private dropin = viewChild<ElementRef<HTMLDivElement>>('dropin')
-
   readonly email = signal<string>('test@example.com').asReadonly()
+
   private clientToken = signal<string>('')
   private dropinInstance = signal<Dropin | null>(null)
 
@@ -30,7 +29,7 @@ export class Route1Component implements OnInit {
     if (this.time() === 10) return 20
     if (this.time() === 20) return 38
     if (this.time() === 30) return 50
-    return 100
+    return 0
   })
 
   private readonly braintreeService: BraintreeService = inject(BraintreeService)
@@ -45,16 +44,11 @@ export class Route1Component implements OnInit {
 
   ngOnInit() {
     this.braintreeService.findOrCreateCustomer({ email: this.email() }).pipe(
-      switchMap((customer: ICustomer) => {
-        return this.braintreeService.getClientToken(customer.id)
-      }),
+      switchMap((customer: ICustomer) => this.braintreeService.getClientToken(customer.id)),
     ).subscribe({
       next: (response: IClientToken) => this.clientToken.set(response.clientToken),
       error: (err: HttpErrorResponse) => console.error('Route1Component - fatal error getting client token', err),
     })
-
-    console.log('braintree', braintree)
-    console.log('braintreeWebDropin', braintreeWebDropin)
   }
 
   updateTime(time: number) {

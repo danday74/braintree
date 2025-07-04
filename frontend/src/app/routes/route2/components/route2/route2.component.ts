@@ -1,4 +1,5 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
+import braintree from 'braintree-web'
 
 @Component({
   selector: 'app-route2',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core'
   templateUrl: './route2.component.html',
   styleUrl: './route2.component.scss',
 })
-export class Route2Component {}
+export class Route2Component implements OnInit {
+  ngOnInit() {
+    console.log('braintree', braintree)
+  }
+}
