@@ -26,7 +26,9 @@
     ],
     "paths": {
       "@components/*": ["app/components/*"],
-      "@routes/*": ["app/routes/*"]
+      "@interfaces/*": ["app/interfaces/*"],
+      "@routes/*": ["app/routes/*"],
+      "@services/*": ["app/services/*"]
     }
   },
   "angularCompilerOptions": {
