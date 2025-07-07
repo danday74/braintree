@@ -4,6 +4,10 @@
 
   <form #payForm="ngForm" id="payForm" (submit)="pay()">
     <div class="grid-direct-server-to-server">
+      <label for="cardNumber">Card number <span class="required">*</span></label>
+      <label for="expiryMonth">Expiry month <span class="required">*</span></label>
+      <label for="expiryYear">Expiry year <span class="required">*</span></label>
+      <label for="cvv">CVV <span class="required">*</span></label>
     </div>
   </form>
 
