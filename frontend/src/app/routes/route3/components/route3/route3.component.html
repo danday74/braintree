@@ -22,4 +22,41 @@
     </div>
   </form>
 
+  <div class="grid-amount">
+    <div>
+      <span class="charging-time">charging time</span>
+    </div>
+
+    <div>
+      <div class="customer">
+        <span>customer: {{ email() }}</span>
+      </div>
+    </div>
+
+    <div>
+      @for (t of [10, 20, 30]; track t) {
+        <button class="btn-amount" [class.active]="time() === t" [class.first]="$first" [class.last]="$last"
+                (click)="updateTime(t)">
+          <span>{{ t }} mins</span>
+        </button>
+      }
+    </div>
+
+    <div>
+      <button form="payForm" class="btn-pay" [disabled]="payForm.invalid">pay &pound;{{ amount() }}</button>
+    </div>
+  </div>
+
+  <div class="transactions">
+    <div>
+      <a [href]="transactionsUrl()" target="braintree">
+        <span>Braintree dashboard transactions</span>
+      </a>
+    </div>
+    <div>
+      <a href="https://developer.paypal.com/braintree/docs/reference/general/testing/node/#valid-card-numbers" target="braintree">
+        <span>Test card numbers</span>
+      </a>
+    </div>
+  </div>
 </div>
