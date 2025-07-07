@@ -5,9 +5,20 @@
   <form #payForm="ngForm" id="payForm" (submit)="pay()">
     <div class="grid-direct-server-to-server">
       <label for="cardNumber">Card number <span class="required">*</span></label>
+      <input id="cardNumber" name="cardNumber" placeholder="4111 1111 1111 1111" [(ngModel)]="model.cardNumber"
+             required pattern="^(?:\s*\d\s*){16}$"/>
+
       <label for="expiryMonth">Expiry month <span class="required">*</span></label>
+      <input id="expiryMonth" name="expiryMonth" placeholder="03" [(ngModel)]="model.expiryMonth"
+             required pattern="^(0?[1-9]|1[0-2])$"/>
+
       <label for="expiryYear">Expiry year <span class="required">*</span></label>
+      <input id="expiryYear" name="expiryYear" placeholder="33" [(ngModel)]="model.expiryYear"
+             required pattern="^\d{2}$"/>
+
       <label for="cvv">CVV <span class="required">*</span></label>
+      <input id="cvv" name="cvv" placeholder="123" [(ngModel)]="model.cvv"
+             required pattern="^\d{3}$"/>
     </div>
   </form>
 
