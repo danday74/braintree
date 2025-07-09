@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken')
 const axios = require('axios')
 const config = require('../../config')
 
+// see https://developer.2c2p.com/docs/api-payment-inquiry
 const paymentInquiry = async invoiceNo => {
 
   const tokenObj = {
