@@ -1,4 +1,4 @@
-# Braintree
+# Braintree & 2C2P
 
 ## Usage
 
