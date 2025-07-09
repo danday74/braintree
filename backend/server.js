@@ -10,7 +10,7 @@ app.get('/ping', (req, res) => {
 
 // START: Braintree APIs
 
-const gateway = require('./js/gateway')
+const gateway = require('./js/braintree/gateway')
 
 const getClientToken = async customerId => {
   const response = await gateway.clientToken.generate({
