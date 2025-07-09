@@ -77,5 +77,12 @@ export class Route3Component {
     })
   }
 
+  clearFormErrorMessage() {
+    this.errors.cardnumber.set('')
+    this.errors.month.set('')
+    this.errors.year.set('')
+    this.errors.cvv.set('')
+  }
+
   }
 }
