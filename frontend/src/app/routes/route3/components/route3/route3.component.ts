@@ -31,12 +31,15 @@ export class Route3Component {
     cvv: signal<string>(''),
   }
 
-  private formValue = computed<I2c2pPayload>(() => ({
-    cardNumber: this.model.cardNumber(),
-    expiryMonth: this.model.expiryMonth(),
-    expiryYear: this.model.expiryYear(),
-    cvv: this.model.cvv(),
-  }))
+  errors: I2c2pModel = {
+    cardnumber: signal<string>(''),
+    month: signal<string>(''),
+    year: signal<string>(''),
+    cvv: signal<string>(''),
+  }
+
+  private readonly twoCTwoPService: TwoCTwoPService = inject(TwoCTwoPService)
+  private readonly toastr: ToastrService = inject(ToastrService)
 
   updateTime(time: number) {
     this.time.set(time)
