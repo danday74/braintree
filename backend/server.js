@@ -38,7 +38,7 @@ app.get('/braintree/client-token', async (req, res) => {
 })
 
 // find or create a customer from an email address (or other unique customer data) - needed to remember previous cards
-app.post('/customer/find-or-create', async (req, res) => {
+app.post('/braintree/customer/find-or-create', async (req, res) => {
   const email = req.body.email
 
   const stream = await gateway.customer.search((search) => search.email().is(email))

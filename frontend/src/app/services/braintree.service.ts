@@ -17,7 +17,7 @@ export class BraintreeService {
   }
 
   findOrCreateCustomer(customerDetails: ICustomerDetails): Observable<ICustomer> {
-    const url = '/api/customer/find-or-create'
+    const url = '/api/braintree/customer/find-or-create'
     return this.http.post<ICustomer>(url, customerDetails)
   }
 
