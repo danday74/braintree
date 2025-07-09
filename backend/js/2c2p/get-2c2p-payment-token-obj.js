@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const config = require('../config')
+const config = require('../../config')
 const axios = require('axios')
 
 // see https://developer.2c2p.com/docs/api-payment-token
