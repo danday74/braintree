@@ -6,8 +6,8 @@ const axios = require('axios')
 const get2c2pPaymentTokenObj = async (amount, currency, invoiceNo) => {
 
   const tokenObj = {
-    merchantID: 'JT01',
-    invoiceNo: '152395366A', // 152395366 gives error ... Existing Invoice Number
+    merchantID: config.twoCTwoP.merchantID,
+    invoiceNo,
     description: 'item 1',
     amount,
     currencyCode: currency,
