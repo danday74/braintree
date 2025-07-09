@@ -106,6 +106,7 @@ app.post('/2c2p/process-payment', async (req, res) => {
 
   if (!pi.success) return res.json(basicResponseObj)
 
+  return res.json({ ...pi, ...basicResponseObj })
 })
 
 // END: 2C2P APIs
