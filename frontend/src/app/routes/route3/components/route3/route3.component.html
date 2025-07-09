@@ -3,22 +3,36 @@
   <div class="three-ds">3DS support: no</div>
 
   <form #payForm="ngForm" id="payForm" (submit)="pay()">
-    <div class="grid-direct-server-to-server">
-      <label for="cardNumber">Card number <span class="required">*</span></label>
-      <input id="cardNumber" name="cardNumber" placeholder="4111 1111 1111 1111" [(ngModel)]="model.cardNumber"
-             required pattern="^(?:\s*\d\s*){16}$"/>
+    <div class="grid-2c2p">
 
-      <label for="expiryMonth">Expiry month <span class="required">*</span></label>
-      <input id="expiryMonth" name="expiryMonth" placeholder="03" [(ngModel)]="model.expiryMonth"
-             required pattern="^(0?[1-9]|1[0-2])$"/>
+      <label for="cardnumber">Card number <span class="required">*</span></label>
+      <input placeholder="4111 1111 1111 1111"
+             #cardnumber data-encrypt="cardnumber" id="cardnumber" name="cardnumber" [(ngModel)]="model.cardnumber"
+             required maxlength="19">
+      <div class="error">&nbsp;</div>
+      <div class="error">{{ errors.cardnumber() || '&nbsp;' }}</div>
 
-      <label for="expiryYear">Expiry year <span class="required">*</span></label>
-      <input id="expiryYear" name="expiryYear" placeholder="33" [(ngModel)]="model.expiryYear"
-             required pattern="^\d{2}$"/>
+      <label for="month">Expiration month <span class="required">*</span></label>
+      <input placeholder="03"
+             #month data-encrypt="month" id="month" name="month" [(ngModel)]="model.month"
+             required maxlength="2">
+      <div class="error">&nbsp;</div>
+      <div class="error">{{ errors.month() || '&nbsp;' }}</div>
+
+      <label for="year">Expiration year <span class="required">*</span></label>
+      <input placeholder="2033"
+             #year data-encrypt="year" id="year" name="year" [(ngModel)]="model.year"
+             required maxlength="4">
+      <div class="error">&nbsp;</div>
+      <div class="error">{{ errors.year() || '&nbsp;' }}</div>
 
       <label for="cvv">CVV <span class="required">*</span></label>
-      <input id="cvv" name="cvv" placeholder="123" [(ngModel)]="model.cvv"
-             required pattern="^\d{3}$"/>
+      <input placeholder="123" autoComplete="off"
+             #cvv data-encrypt="cvv" id="cvv" name="cvv" [(ngModel)]="model.cvv"
+             required maxlength="4">
+      <div class="error">&nbsp;</div>
+      <div class="error">{{ errors.cvv() || '&nbsp;' }}</div>
+
     </div>
   </form>
 
