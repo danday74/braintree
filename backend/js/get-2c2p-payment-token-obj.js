@@ -13,7 +13,7 @@ const get2c2pPaymentTokenObj = async (amount, currency, invoiceNo) => {
     currencyCode: currency,
     request3DS: 'N',
   }
-  const token = jwt.sign(tokenObj, config.jwt.secret)
+  const token = jwt.sign(tokenObj, config.twoCTwoP.jwt.secret)
 
   const url = 'https://sandbox-pgw.2c2p.com/payment/4.3/paymentToken'
   const payload = { payload: token }
