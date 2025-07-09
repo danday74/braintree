@@ -8,7 +8,7 @@ const get2c2pPaymentTokenObj = async (amount, currency, invoiceNo) => {
   const tokenObj = {
     merchantID: config.twoCTwoP.merchantID,
     invoiceNo,
-    description: 'item 1',
+    description: 'item description',
     amount,
     currencyCode: currency,
     request3DS: 'N',
