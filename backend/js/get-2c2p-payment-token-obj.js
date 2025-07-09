@@ -23,7 +23,7 @@ const get2c2pPaymentTokenObj = async (amount, currency, invoiceNo) => {
 
   const remoteToken = responseData.payload
   if (remoteToken) {
-    const decoded = jwt.verify(remoteToken, config.jwt.secret)
+    const decoded = jwt.verify(remoteToken, config.twoCTwoP.jwt.secret)
     return {
       success: decoded.respCode === '0000',
       responseData,
