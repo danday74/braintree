@@ -85,12 +85,17 @@ export class Route3Component {
     }
 
     this.twoCTwoPService.processPayment(payload).subscribe({
-      next: (response: unknown) => {
-        this.toastr.success('Payment success')
-        console.log('Route3Component.processPayment success', response)
+      next: (response: I2c2pResponse) => {
+        if (response.success) {
+          this.toastr.success('Payment success')
+          console.log('Route3Component.processPayment success', response)
+        } else {
+          this.toastr.error(response.message, 'Payment failure')
+          console.error('Route3Component.processPayment failure', response)
+        }
       },
       error: (err: HttpErrorResponse) => {
-        this.toastr.error('Payment failure')
+        this.toastr.error(err.message, 'Payment error')
         console.error('Route3Component.processPayment error', err)
       },
     })
