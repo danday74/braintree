@@ -24,7 +24,7 @@ export class Route3Component {
     return 0
   })
 
-  model = {
+  model: I2c2pModel = {
     cardnumber: signal<string>(''),
     month: signal<string>(''),
     year: signal<string>(''),
