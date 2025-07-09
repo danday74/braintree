@@ -30,7 +30,7 @@ sandbox dashboard https://sandbox.braintreegateway.com
 
 test card numbers https://developer.paypal.com/braintree/docs/reference/general/testing/node/#valid-card-numbers
 
-## Setting up a Braintree sandbox account
+### Setting up a Braintree sandbox account
 
 To test integration, you need a Braintree sandbox test account (eventually you will need a real account)
 
@@ -42,11 +42,7 @@ With a sandbox account, you can view transactions by signing in to the `sandbox 
 
 You can configure sandbox settings to set currency, enforce CVV, etc.
 
-## Backend
-
-Minimal backend APIs needed for integration are found in [server.js](backend/server.js)
-
-## Useful info
+### Useful info
 
 * This app affords a minimal Braintree integration
 
