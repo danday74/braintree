@@ -21,7 +21,7 @@ export class Route3Component {
   private payForm = viewChild('payForm', { read: ElementRef })
 
   readonly email = signal<string>(myAppConfig.email).asReadonly()
-  readonly transactionsUrl = signal<string>(myAppConfig.transactionsUrl).asReadonly()
+  private readonly currency = signal<string>(myAppConfig.defaultCurrency).asReadonly()
 
   amount = computed<number>(() => {
     if (this.time() === 10) return 20
