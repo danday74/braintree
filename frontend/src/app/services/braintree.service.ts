@@ -22,7 +22,7 @@ export class BraintreeService {
   }
 
   getClientToken(customerId: string | null = null): Observable<IClientToken> {
-    const baseUrl = '/api/client-token'
+    const baseUrl = '/api/braintree/client-token'
     const url = customerId ? `${baseUrl}/${customerId}` : baseUrl
     return this.http.get<IClientToken>(url)
   }
