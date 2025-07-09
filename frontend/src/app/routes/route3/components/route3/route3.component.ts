@@ -62,7 +62,6 @@ export class Route3Component {
   // below based on https://developer.2c2p.com/docs/using-secure-pay-javascript-library
 
   pay() {
-    console.log('pay', this.formValue())
     this.clearFormErrorMessage()
     this.formatCardnumber()
 
