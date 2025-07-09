@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const get2c2pPaymentTokenObj = require('./js/get-2c2p-payment-token-obj')
 
 app.use(express.json())
 
