@@ -12,7 +12,13 @@
 
 NOTE: If the backend is not running, the frontend will not work
 
-## Docs
+## Backend
+
+Minimal backend APIs needed for integration are found in [server.js](backend/server.js)
+
+## Braintree
+
+### Docs
 
 docs home https://developer.paypal.com/braintree/docs
 
