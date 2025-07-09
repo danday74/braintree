@@ -91,6 +91,16 @@ const getBasicResponseObj = (response, stage) => ({
   stage,
 })
 
+app.post('/2c2p/process-payment', async (req, res) => {
+  const amount = req.body.amount
+  const currency = req.body.currency
+  const encryptedCardInfo = req.body.encryptedCardInfo
+
+  const invoiceNo = 'inv' + Date.now()
+
+  let basicResponseObj
+
+})
 
 // END: 2C2P APIs
 
