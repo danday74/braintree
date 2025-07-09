@@ -12,7 +12,7 @@ export class BraintreeService {
   private readonly http: HttpClient = inject(HttpClient)
 
   transactionSale(payload: IBraintreeTransactionSalePayload): Observable<IBraintreeTransactionSaleResponse> {
-    const url = '/api/transaction/sale'
+    const url = '/api/braintree/transaction/sale'
     return this.http.post<IBraintreeTransactionSaleResponse>(url, payload)
   }
 
