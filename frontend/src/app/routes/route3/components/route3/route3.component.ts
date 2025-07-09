@@ -77,13 +77,6 @@ export class Route3Component {
     })
   }
 
-  private clearFormErrorMessage() {
-    this.errors.cardnumber.set('')
-    this.errors.month.set('')
-    this.errors.year.set('')
-    this.errors.cvv.set('')
-  }
-
   private processPayment(formData: I2c2pFormData) {
     const payload: I2c2pPayload = {
       encryptedCardInfo: formData.encryptedCardInfo,
@@ -101,6 +94,13 @@ export class Route3Component {
         console.error('Route3Component.processPayment error', err)
       },
     })
+  }
+
+  private clearFormErrorMessage() {
+    this.errors.cardnumber.set('')
+    this.errors.month.set('')
+    this.errors.year.set('')
+    this.errors.cvv.set('')
   }
 
   private displayFormErrorMessage(errCode: number, errDesc: string) {
