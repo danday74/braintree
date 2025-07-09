@@ -2,7 +2,9 @@ const jwt = require('jsonwebtoken')
 const config = require('../config')
 const axios = require('axios')
 
-const get2c2pPaymentTokenObj = async (amount, currency) => {
+// see https://developer.2c2p.com/docs/api-payment-token
+const get2c2pPaymentTokenObj = async (amount, currency, invoiceNo) => {
+
   const tokenObj = {
     merchantID: 'JT01',
     invoiceNo: '152395366A', // 152395366 gives error ... Existing Invoice Number
