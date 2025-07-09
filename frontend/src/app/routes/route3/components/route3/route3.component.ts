@@ -51,6 +51,8 @@ export class Route3Component {
     this.time.set(time)
   }
 
+  // below based on https://developer.2c2p.com/docs/using-secure-pay-javascript-library
+
   pay() {
     console.log('pay', this.formValue())
   }
