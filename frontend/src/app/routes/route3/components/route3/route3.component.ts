@@ -1,8 +1,16 @@
-import { Component, computed, signal } from '@angular/core'
+import { Component, computed, ElementRef, inject, signal, viewChild } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common'
 import { myAppConfig } from '../../../../my-app.config'
+import { TwoCTwoPService } from '@services/two-ctwo-p.service'
 import { I2c2pPayload } from '@interfaces/i-2c2p-payload'
+import { I2c2pFormData } from '@interfaces/i-2c2p-form-data'
+import { HttpErrorResponse } from '@angular/common/http'
+import { ToastrService } from 'ngx-toastr'
+import { I2c2pModel } from '@interfaces/i-2c2p-model'
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const My2c2p: any
 
 @Component({
   selector: 'app-route3',
