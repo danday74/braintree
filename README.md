@@ -30,7 +30,7 @@ To test integration, you need a Braintree sandbox test account (eventually you w
 
 To use your own Braintree sandbox account, create an account using the `sandbox signup` link above
 
-You will be given a `Merchant ID` `Public Key` and `Private Key` - enter those values in [gateway.js](backend/js/gateway.js)
+You will be given a `Merchant ID` `Public Key` and `Private Key` - enter those values in [gateway.js](backend/js/braintree/gateway.js)
 
 With a sandbox account, you can view transactions by signing in to the `sandbox dashboard` using the link above
 
