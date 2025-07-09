@@ -103,5 +103,10 @@ export class Route3Component {
     })
   }
 
+
+  private formatCardnumber() {
+    let formattedCardnumber: string = this.model.cardnumber()
+    formattedCardnumber = formattedCardnumber.replace(/(\d{4})(?=\d)/g, '$1 ')
+    this.model.cardnumber.set(formattedCardnumber)
   }
 }
