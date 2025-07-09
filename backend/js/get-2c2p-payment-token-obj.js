@@ -11,6 +11,7 @@ const get2c2pPaymentTokenObj = async (amount, currency, invoiceNo) => {
     description: 'item 1',
     amount,
     currencyCode: currency,
+    request3DS: 'N',
   }
   const token = jwt.sign(tokenObj, config.jwt.secret)
 
