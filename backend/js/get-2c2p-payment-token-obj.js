@@ -28,6 +28,7 @@ const get2c2pPaymentTokenObj = async (amount, currency, invoiceNo) => {
       success: decoded.respCode === '0000',
       responseData,
       decoded,
+      ...decoded,
       webPaymentUrl: decoded.webPaymentUrl,
       paymentToken: decoded.paymentToken,
       respCode: decoded.respCode,
