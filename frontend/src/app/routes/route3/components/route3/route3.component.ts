@@ -103,6 +103,36 @@ export class Route3Component {
     })
   }
 
+  displayFormErrorMessage(errCode: number, errDesc: string) {
+    switch (errCode) {
+      case 1:
+      case 2:
+        this.errors.cardnumber.set(errDesc)
+        this.cardnumber()?.nativeElement.focus()
+        break
+      case 3:
+      case 4:
+      case 8:
+      case 9:
+      case 11:
+        this.errors.month.set(errDesc)
+        this.month()?.nativeElement.focus()
+        break
+      case 5:
+      case 6:
+      case 7:
+      case 12:
+        this.errors.year.set(errDesc)
+        this.year()?.nativeElement.focus()
+        break
+      case 10:
+        this.errors.cvv.set(errDesc)
+        this.cvv()?.nativeElement.focus()
+        break
+      default:
+        console.warn('unable to display form error message', { errCode, errDesc })
+    }
+  }
 
   private formatCardnumber() {
     let formattedCardnumber: string = this.model.cardnumber()
