@@ -3,7 +3,7 @@ const axios = require('axios')
 const config = require('../../config')
 
 // see https://developer.2c2p.com/docs/api-payment-inquiry
-const paymentInquiry = async invoiceNo => {
+const paymentInquiry2c2p = async invoiceNo => {
 
   const tokenObj = {
     merchantID: config.twoCTwoP.merchantID,
@@ -107,4 +107,4 @@ const paymentInquiry = async invoiceNo => {
   }
 }
 
-module.exports = paymentInquiry
+module.exports = paymentInquiry2c2p

@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 // see https://developer.2c2p.com/docs/api-do-payment
-const do2c2pPayment = async (paymentToken, encryptedCardInfo) => {
+const payment2c2p = async (paymentToken, encryptedCardInfo) => {
 
   const url = 'https://sandbox-pgw.2c2p.com/payment/4.3/payment'
   const payload = {
@@ -30,4 +30,4 @@ const do2c2pPayment = async (paymentToken, encryptedCardInfo) => {
   }
 }
 
-module.exports = do2c2pPayment
+module.exports = payment2c2p

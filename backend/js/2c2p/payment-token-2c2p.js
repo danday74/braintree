@@ -3,7 +3,7 @@ const config = require('../../config')
 const axios = require('axios')
 
 // see https://developer.2c2p.com/docs/api-payment-token
-const get2c2pPaymentTokenObj = async (amount, currency, invoiceNo) => {
+const paymentToken2c2p = async (amount, currency, invoiceNo) => {
 
   const tokenObj = {
     merchantID: config.twoCTwoP.merchantID,
@@ -47,4 +47,4 @@ const get2c2pPaymentTokenObj = async (amount, currency, invoiceNo) => {
   }
 }
 
-module.exports = get2c2pPaymentTokenObj
+module.exports = paymentToken2c2p
