@@ -25,9 +25,9 @@ export class Route3Component {
   })
 
   model = {
-    cardNumber: signal<string>(''),
-    expiryMonth: signal<string>(''),
-    expiryYear: signal<string>(''),
+    cardnumber: signal<string>(''),
+    month: signal<string>(''),
+    year: signal<string>(''),
     cvv: signal<string>(''),
   }
 
