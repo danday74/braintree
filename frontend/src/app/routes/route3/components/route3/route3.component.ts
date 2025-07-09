@@ -14,6 +14,12 @@ import { I2c2pPayload } from '@interfaces/i-2c2p-payload'
 export class Route3Component {
   time = signal<number>(10)
 
+  private cardnumber = viewChild<ElementRef<HTMLInputElement>>('cardnumber')
+  private month = viewChild<ElementRef<HTMLInputElement>>('month')
+  private year = viewChild<ElementRef<HTMLInputElement>>('year')
+  private cvv = viewChild<ElementRef<HTMLInputElement>>('cvv')
+  private payForm = viewChild('payForm', { read: ElementRef })
+
   readonly email = signal<string>(myAppConfig.email).asReadonly()
   readonly transactionsUrl = signal<string>(myAppConfig.transactionsUrl).asReadonly()
 
