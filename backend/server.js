@@ -100,10 +100,16 @@ app.post('/2c2p/process-payment', async (req, res) => {
 
   let basicResponseObj
 
+  const paymentTokenObj = await get2c2pPaymentTokenObj(amount, currency, invoiceNo)
+  basicResponseObj = getBasicResponseObj(paymentTokenObj, 'get2c2pPaymentTokenObj')
   if (!paymentTokenObj.success) return res.json(basicResponseObj)
 
+  const payment = await do2c2pPayment(paymentTokenObj.paymentToken, encryptedCardInfo)
+  basicResponseObj = getBasicResponseObj(payment, 'do2c2pPayment')
   if (!payment.success) return res.json(basicResponseObj)
 
+  const pi = await paymentInquiry(invoiceNo)
+  basicResponseObj = getBasicResponseObj(pi, 'paymentInquiry')
   if (!pi.success) return res.json(basicResponseObj)
 
   return res.json({ ...pi, ...basicResponseObj })
