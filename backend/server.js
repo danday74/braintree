@@ -82,6 +82,10 @@ app.post('/braintree/transaction/sale', async (req, res) => {
 
 // START: 2C2P APIs
 
+const get2c2pPaymentTokenObj = require('./js/2c2p/get-2c2p-payment-token-obj')
+const do2c2pPayment = require('./js/2c2p/do-2c2p-payment')
+const paymentInquiry = require('./js/2c2p/payment-inquiry')
+
 const getBasicResponseObj = (response, stage) => ({
   success: response.success,
   message: response.respDesc,
