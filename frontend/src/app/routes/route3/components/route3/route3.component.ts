@@ -8,6 +8,7 @@ import { I2c2pFormData } from '@interfaces/i-2c2p-form-data'
 import { HttpErrorResponse } from '@angular/common/http'
 import { ToastrService } from 'ngx-toastr'
 import { I2c2pModel } from '@interfaces/i-2c2p-model'
+import { I2c2pResponse } from '@interfaces/i-2c2p-response'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const My2c2p: any
