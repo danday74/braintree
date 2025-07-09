@@ -83,6 +83,17 @@ app.post('/transaction/sale', async (req, res) => {
 
 // END: Braintree APIs
 
+// START: 2C2P APIs
+
+const getBasicResponseObj = (response, stage) => ({
+  success: response.success,
+  message: response.respDesc,
+  stage,
+})
+
+
+// END: 2C2P APIs
+
 app.listen(port, () => {
   console.log(`braintree-be listening on port ${port}`)
 })
