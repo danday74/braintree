@@ -63,5 +63,20 @@ export class Route3Component {
 
   pay() {
     console.log('pay', this.formValue())
+    this.clearFormErrorMessage()
+    this.formatCardnumber()
+
+    const production = false
+    const env = production ? My2c2p.APIEnvironment.Production : My2c2p.APIEnvironment.Sandbox
+
+    My2c2p.getEncrypted(env, this.payForm()!.nativeElement, (formData: I2c2pFormData, errCode: number, errDesc: string) => {
+      if (errCode === 0) {
+        this.processPayment(formData)
+      } else {
+        this.displayFormErrorMessage(errCode, errDesc)
+      }
+    })
+  }
+
   }
 }
