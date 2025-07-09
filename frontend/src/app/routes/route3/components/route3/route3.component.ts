@@ -77,14 +77,14 @@ export class Route3Component {
     })
   }
 
-  clearFormErrorMessage() {
+  private clearFormErrorMessage() {
     this.errors.cardnumber.set('')
     this.errors.month.set('')
     this.errors.year.set('')
     this.errors.cvv.set('')
   }
 
-  processPayment(formData: I2c2pFormData) {
+  private processPayment(formData: I2c2pFormData) {
     const payload: I2c2pPayload = {
       encryptedCardInfo: formData.encryptedCardInfo,
       amount: this.amount(),
@@ -103,7 +103,7 @@ export class Route3Component {
     })
   }
 
-  displayFormErrorMessage(errCode: number, errDesc: string) {
+  private displayFormErrorMessage(errCode: number, errDesc: string) {
     switch (errCode) {
       case 1:
       case 2:
