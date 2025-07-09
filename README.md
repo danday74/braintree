@@ -53,3 +53,7 @@ Further APIs may be required ... for example, to remove a card that has previous
 The former is easier to integrate, the latter is more flexible and allows custom styling
 
 Both use the same backend APIs
+
+## 2C2P
+
+### 
