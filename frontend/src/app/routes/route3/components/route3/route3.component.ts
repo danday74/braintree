@@ -84,5 +84,24 @@ export class Route3Component {
     this.errors.cvv.set('')
   }
 
+  processPayment(formData: I2c2pFormData) {
+    const payload: I2c2pPayload = {
+      encryptedCardInfo: formData.encryptedCardInfo,
+      amount: this.amount(),
+      currency: this.currency(),
+    }
+
+    this.twoCTwoPService.processPayment(payload).subscribe({
+      next: (response: unknown) => {
+        this.toastr.success('Payment success')
+        console.log('Route3Component.processPayment success', response)
+      },
+      error: (err: HttpErrorResponse) => {
+        this.toastr.error('Payment failure')
+        console.error('Route3Component.processPayment error', err)
+      },
+    })
+  }
+
   }
 }
