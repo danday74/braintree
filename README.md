@@ -84,4 +84,4 @@ Use a premade demo account https://developer.2c2p.com/docs/sandbox
 
 ### Useful info
 
-Premade demo accounts do not support currency GBP but GBP is supported on live environments
+* Premade demo accounts do not support currency GBP but GBP is supported on live environments
