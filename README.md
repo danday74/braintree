@@ -56,4 +56,32 @@ Both use the same backend APIs
 
 ## 2C2P
 
-### 
+### Docs
+
+docs home https://developer.2c2p.com/docs/general
+
+test card numbers https://developer.2c2p.com/docs/reference-testing-information
+
+### Flow
+
+1) On client, collect card details and securely send them to server https://developer.2c2p.com/docs/using-secure-pay-javascript-library
+
+2) On server, get payment
+   token [payment-token-2c2p.js](backend/js/2c2p/payment-token-2c2p.js) https://developer.2c2p.com/docs/api-payment-token
+
+3) On server, make payment [payment-2c2p.js](backend/js/2c2p/payment-2c2p.js) https://developer.2c2p.com/docs/api-do-payment
+
+4) On server, retrieve payment
+   details [payment-inquiry-2c2p.js](backend/js/2c2p/payment-inquiry-2c2p.js) https://developer.2c2p.com/docs/api-payment-inquiry
+
+`2` `3` and `4` occur consecutively in [server.js](backend/server.js)
+
+For a backend integration overview see https://developer.2c2p.com/docs/direct-api-flow-server-to-server
+
+### 2C2P sandbox account
+
+Use a premade demo account https://developer.2c2p.com/docs/sandbox
+
+### Useful info
+
+Premade demo accounts do not support currency GBP but GBP is supported on live environments
